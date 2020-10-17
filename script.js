@@ -250,7 +250,11 @@ function addSpe(event) {
         displayResult(nombreSpe, display1);
     }  else if(secondNombreNum === 0 && resultClick === true){
         console.log("Spe 2")
+        if(displayNumSpe === undefined){
+            displaySpe(nombreNum, display2)
+        }else{
         displaySpe(displayNumSpe, display2);
+        }
         nombreSpe = nombreNum;
         console.log ("displayNombreSpe = "+displayNumSpe)
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
@@ -260,7 +264,6 @@ function addSpe(event) {
         secondNombreNum = 0;
         operator = undefined;
         speClick = true;
-
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
     }else if(nombreStr ==="" && secondNombreNum === 0 && operator !== undefined){
