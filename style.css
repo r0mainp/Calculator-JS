@@ -7,6 +7,7 @@ body{
 }
 .calc{
     height: 100%;
+    position : relative;
 }
 .calc-container{
     height: 100vh;
@@ -20,7 +21,7 @@ body{
     width : 100%;
     height: 10%;
     text-align: right;
-    font-size: 28px;
+    font-size: 32px;
 }
 
 .calc-display{
@@ -60,7 +61,34 @@ height : 12%;
 .btn-result{
     background-color:	#736F72;
 }
-.log{
-    display : none;
+.btn-log{
+    position: absolute;
+    top : 1rem;
+    left: 1rem;
+    background-color: transparent;
+    font-size: 20px;
+    z-index: 99;
 }
+.log{
+
+    position: absolute;
+    top:100vh;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: #f5f0f3;
+    transition: all 100ms linear;
+}
+.log-display{
+    transition: all 500ms linear;
+    top: 0vh;
+    height: 100vh;
+}
+.title-log{
+    display:none;
+}
+.title-log-display{
+    display: block;
+}
+
 

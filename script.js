@@ -12,7 +12,8 @@ let buttonOp = document.querySelectorAll(".js-btn-operand");
 let buttonOpSpe = document.querySelectorAll('.js-btn-operand-spe')
 let buttonAddLog = document.querySelector(".js-btn-log");
 let logDiv = document.querySelector('.log');
-let contentDisplay1 =document.querySelector('.calc-display').innerHTML;
+let btnLog =  document.querySelector('.btn-log');
+let titleLog = document.querySelector('.title-log')
 
 let nombreStr = "";
 
@@ -206,6 +207,7 @@ function addOp(event) {
         operator = event.currentTarget.getAttribute('data-operation');
         lastOp = operator;
         displayOp =event.currentTarget.textContent;
+        nombreStr = "";
         console.log("Op3");
     } else if (nombreStr !== "" && secondNombreNum === 0) {
         secondNombreNum = Number(nombreStr);
@@ -214,7 +216,7 @@ function addOp(event) {
         result = operation[operator](nombreNum, secondNombreNum);
         nombreNum = result;
         operator = event.currentTarget.getAttribute('data-operation');
-
+        nombreStr = "";
         displayResult(nombreNum, display1);
         secondNombreNum = 0;
         console.log("Op4");
@@ -428,6 +430,11 @@ function addLog(){
 buttonAddLog.addEventListener('click', addLog);
 
 
-//Modifier la taille de police de Display1 si le nombre dépasse
+//boutton Log
+function toggleLog(){
+    logDiv.classList.toggle('log-display');
+    titleLog.classList.toggle('title-log-display')
+}
+btnLog.addEventListener('click', toggleLog)
 
 
