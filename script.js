@@ -190,7 +190,6 @@ function addOp(event) {
         operator = event.currentTarget.getAttribute('data-operation');
         lastOp = operator;
         displayOp =event.currentTarget.textContent;
-        nombreStr = "";
         console.log("Op3");
     } else if (nombreStr !== "" && secondNombreNum === 0) {
         secondNombreNum = Number(nombreStr);
@@ -221,6 +220,7 @@ function addOp(event) {
         secondNombreNum = 0;
         nombreNum = 0;
         nombreSpe = 0;
+        nombreStr = "";
         console.log("Op7");
     } else if (resultClick === false && secondNombreNum === 0) {
         secondNombreNum = result;
@@ -244,7 +244,7 @@ function addOp(event) {
     }
 
     
-    nombreStr = "";
+
     console.dir(resultClick)
     console.log("nombreNum : " + nombreNum)
     console.log("secondNombreNum : " + secondNombreNum)
