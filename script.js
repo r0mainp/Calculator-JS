@@ -16,6 +16,7 @@ let nombreStr = "";
 
 let nombreNum = 0;
 let secondNombreNum = 0;
+let lastSecondNombreNum=0;
 let nombreSpe = 0;
 let operator;
 let lastOp;
@@ -129,53 +130,72 @@ function addOp(event) {
 
 
     //partie operation
-    if (resultClick === true && nombreSpe !== 0) {
-        nombreNum = result;
+    if (resultClick === true && event.currentTarget.textContent === "=") {
+        nombreNum = result
+        operator = lastOp;
+        display2.textContent = nombreNum +" "+displayOp+ " "+lastSecondNombreNum+" "
+        result = operation[operator](nombreNum, lastSecondNombreNum);
+        displayResult(result, display1);
+        console.log("Op1");
+
+    }else if (resultClick === true && nombreSpe !== 0) {
+        nombreNum = nombreSpe;
         displayResult(result, display2);
         operator = event.currentTarget.getAttribute('data-operation');
-        console.log("Op1");
+        console.log("Op1-2");
     } else if (resultClick === true && nombreStr !== "") {
         nombreNum = Number(nombreStr);
         displayResult(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
-        console.log("Op1Bis");
+        console.log("Op1-3");
     } else if (resultClick === true) {
         nombreNum = result
         displayResult(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
-        console.log("Op1Ter");
+        lastOp = operator;
+        console.log("Op1-4");
 
     } else if (nombreSpe !== 0 && nombreNum === 0 ||nombreSpe !== 0 && secondNombreNum === 0 && operator === undefined) {
         nombreNum = nombreSpe;
         operator = event.currentTarget.getAttribute('data-operation');
+        lastOp = operator;
+        displayOp =event.currentTarget.textContent;
         nombreStr = "";
         console.log("Op2");
     } else if (nombreStr !== "" && nombreNum === 0) {
         nombreNum = Number(nombreStr);
         displayNum(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
+        lastOp = operator;
+        displayOp =event.currentTarget.textContent;
         nombreStr = "";
         console.log("Op3");
     } else if (nombreStr !== "" && secondNombreNum === 0) {
         secondNombreNum = Number(nombreStr);
+        lastSecondNombreNum = secondNombreNum;
         displayNum(secondNombreNum, display2);
         result = operation[operator](nombreNum, secondNombreNum);
         nombreNum = result;
         operator = event.currentTarget.getAttribute('data-operation');
+
         displayResult(nombreNum, display1);
         secondNombreNum = 0;
         console.log("Op4");
     } else if (nombreSpe !== 0 && secondNombreNum === 0) {
         secondNombreNum = nombreSpe;
+        lastSecondNombreNum = secondNombreNum;
         result = operation[operator](nombreNum, secondNombreNum);
         nombreNum = result;
         displayResult(nombreNum, display1);
         secondNombreNum = 0;
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op5");
+        console.log(lastOp)
+        console.log(displayOp)
     } else if (event.currentTarget.textContent === "=") {
         result = operation[operator](nombreNum, secondNombreNum);
         displayResult(result, display1);
+        lastSecondNombreNum = secondNombreNum;
         secondNombreNum = 0;
         nombreNum = 0;
         nombreSpe = 0;
@@ -188,6 +208,7 @@ function addOp(event) {
         displayResult(nombreNum, display1);
         secondNombreNum = 0;
         operator = event.currentTarget.getAttribute('data-operation');
+        lastOp = operator;
         console.log("Op6");
     }
 
