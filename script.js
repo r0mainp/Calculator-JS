@@ -71,7 +71,7 @@ let logOp = [];
 let logResult = []
 let displayOp;
 
-
+//display functions
 function displayNum(what, display) {
     display.textContent += what + " ";
 
@@ -145,7 +145,7 @@ function addOp(event) {
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op1Ter");
 
-    } else if (nombreSpe !== 0 && nombreNum === 0) {
+    } else if (nombreSpe !== 0 && nombreNum === 0 ||nombreSpe !== 0 && secondNombreNum === 0 && operator === undefined) {
         nombreNum = nombreSpe;
         operator = event.currentTarget.getAttribute('data-operation');
         nombreStr = "";
@@ -227,8 +227,23 @@ function addSpe(event) {
         nombreStr = "";
         speClick = true;
         displayResult(nombreSpe, display1);
-    } else if (resultClick === true) {
+    }  else if(nombreStr ==="" && secondNombreNum === 0){
         console.log("Spe 2")
+        displaySpe(displayNumSpe, display2);
+        console.log ("displayNombreSpe = "+displayNumSpe)
+        secondNombreNum = nombreStr;
+        result = operation[operator](nombreNum, nombreSpe)
+        resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](result)
+        nombreSpe = resultSpe;
+        displayNumSpe = displaySpeAlt(resultSpe);
+        nombreNum = result;
+        secondNombreNum = 0;
+        operator = undefined;
+        speClick = true;
+        displayResult(nombreSpe, display1);
+        console.log("nombreSpe : " + nombreSpe)
+    }else if (resultClick === true) {
+        console.log("Spe 3")
         nombreSpe = result;
         displayNumSpe = displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
@@ -239,8 +254,8 @@ function addSpe(event) {
         console.log("nombreSpe : " + nombreSpe)
         console.log("NombreNum : " + nombreNum)
 
-    } else {
-        console.log("Spe 3")
+    }else{
+        console.log("Spe 4")
         displaySpe(displayNumSpe, display2);
         console.log ("displayNombreSpe = "+displayNumSpe)
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
