@@ -107,7 +107,7 @@ function addOp(event) {
 
     //partie operation
     if (resultClick === true && nombreSpe !== 0) {
-        nombreNum = nombreSpe;
+        nombreNum = result;
         displayResult(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op1");
@@ -198,6 +198,7 @@ function addSpe(event) {
         displaySpe(nombreSpe);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         nombreSpe = resultSpe;
+        result = resultSpe;
         console.log("nombreSpe : " + nombreSpe)
         nombreStr = "";
         displayResult(nombreSpe, display1);
