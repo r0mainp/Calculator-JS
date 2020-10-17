@@ -206,8 +206,8 @@ function addSpe(event) {
         nombreSpe = result;
         displaySpe(nombreSpe);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
-        nombreSpe = resultSpe;
-        displayResult(nombreSpe, display1);
+        result = resultSpe;
+        displayResult(result, display1);
         console.log("nombreSpe : " + nombreSpe)
         console.log("NombreNum : " + nombreNum)
 
