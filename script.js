@@ -7,6 +7,7 @@ let display2 = document.querySelector('.operation-display');
 let buttonNum = document.querySelectorAll('.js-btn-num');
 let buttonErase = document.querySelector(".js-btn-erase");
 let buttonEraseAll = document.querySelector(".js-btn-erase-all");
+let buttonEraseLast = document.querySelector(".js-btn-erase-last")
 let buttonOp = document.querySelectorAll(".js-btn-operand");
 let buttonOpSpe = document.querySelectorAll('.js-btn-operand-spe')
 let logDiv = document.querySelector('.log');
@@ -306,7 +307,7 @@ function click(event) {
         display1.textContent = nombreStr;
     } else {
         nombreStr += event.currentTarget.textContent;
-        displayNum(event.currentTarget.textContent, display1)
+        display1.textContent = nombreStr;
     }
 
     console.log(nombreStr)
@@ -351,5 +352,18 @@ function eraseAll() {
 }
 buttonEraseAll.addEventListener('click', eraseAll);
 
+//boutton effacer dernier caractère
+function eraseLast(){
+
+    nombreStr = nombreStr.substring(0, nombreStr.length - 1);
+    console.log(nombreStr)
+    if(nombreStr === ""){
+        display1.textContent = "0";
+    }else{
+    display1.textContent = nombreStr;
+    }
+}
+
+buttonEraseLast.addEventListener('click', eraseLast);
 
 
