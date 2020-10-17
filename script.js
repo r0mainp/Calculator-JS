@@ -227,8 +227,23 @@ function addSpe(event) {
         nombreStr = "";
         speClick = true;
         displayResult(nombreSpe, display1);
-    }  else if(nombreStr ==="" && secondNombreNum === 0){
+    }  else if(secondNombreNum === 0 && resultClick === true){
         console.log("Spe 2")
+        displaySpe(displayNumSpe, display2);
+        nombreSpe = nombreNum;
+        console.log ("displayNombreSpe = "+displayNumSpe)
+        resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
+        nombreSpe = resultSpe;
+        displayNumSpe = displaySpeAlt(resultSpe);
+        nombreNum = resultSpe;
+        secondNombreNum = 0;
+        operator = undefined;
+        speClick = true;
+
+        displayResult(nombreSpe, display1);
+        console.log("nombreSpe : " + nombreSpe)
+    }else if(nombreStr ==="" && secondNombreNum === 0 && operator !== undefined){
+        console.log("Spe 3")
         displaySpe(displayNumSpe, display2);
         console.log ("displayNombreSpe = "+displayNumSpe)
         secondNombreNum = nombreStr;
@@ -242,18 +257,6 @@ function addSpe(event) {
         speClick = true;
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
-    }else if (resultClick === true) {
-        console.log("Spe 3")
-        nombreSpe = result;
-        displayNumSpe = displaySpe(nombreSpe, display2);
-        resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
-        result = resultSpe;
-        displayResult(result, display1);
-        speClick = true
-        resultClick = false;
-        console.log("nombreSpe : " + nombreSpe)
-        console.log("NombreNum : " + nombreNum)
-
     }else{
         console.log("Spe 4")
         displaySpe(displayNumSpe, display2);
