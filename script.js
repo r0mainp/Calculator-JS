@@ -180,7 +180,7 @@ function addOp(event) {
 
     }else if (resultClick === true && nombreSpe !== 0) {
         nombreNum = nombreSpe;
-        displayResult(result, display2);
+        displayResult(nombreSpe, display2);
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op1-2");
     } else if (resultClick === true && nombreStr !== "") {
@@ -406,7 +406,7 @@ function eraseAll() {
     console.log("lol2");
     display1.textContent = "0";
     display2.textContent = "";
-    resultLog.innerHTML = ""
+    resultLog.innerHTML = "git"
 }
 buttonEraseAll.addEventListener('click', eraseAll);
 
