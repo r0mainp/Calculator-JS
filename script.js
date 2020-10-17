@@ -12,6 +12,7 @@ let buttonOp = document.querySelectorAll(".js-btn-operand");
 let buttonOpSpe = document.querySelectorAll('.js-btn-operand-spe')
 let buttonAddLog = document.querySelector(".js-btn-log");
 let logDiv = document.querySelector('.log');
+let contentDisplay1 =document.querySelector('.calc-display').innerHTML;
 
 let nombreStr = "";
 
@@ -29,6 +30,10 @@ let speDisplay;
 let speClick;
 let displayNumSpe;
 display1.textContent = 0;
+
+let widthValue = getComputedStyle(display1).fontSize
+let width = widthValue.toString()
+let widthNum = Number(width.substring(0, width.length - 2))
 
 let operation = {
     addition: function (num1, num2) {
@@ -310,6 +315,20 @@ function click(event) {
         nombreStr += event.currentTarget.textContent;
         display1.textContent = nombreStr;
     }
+    
+    let widthValue = getComputedStyle(display1).fontSize
+    let width = widthValue.toString()
+    let widthNum = Number(width.substring(0, width.length - 2))
+    let longeurMax = display1.offsetWidth/(widthNum /1.8);
+    let shrink = 0;
+    console.log(longeurMax)
+    console.log(nombreStr.length)
+if(nombreStr.length > longeurMax){
+    widthNum = widthNum/2
+console.log("SHRIIIINK")
+
+display1.style.fontSize = widthNum+"px";
+}
 
     console.log(nombreStr)
 }
@@ -373,5 +392,8 @@ function addLog(){
 
 }
 buttonAddLog.addEventListener('click', addLog);
+
+
+//Modifier la taille de police de Display1 si le nombre dépasse
 
 
