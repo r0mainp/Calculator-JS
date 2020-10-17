@@ -23,6 +23,7 @@ let result;
 let lastResult;
 let resultSpe;
 let speDisplay;
+let speClick;
 display1.textContent = 0;
 
 let operation = {
@@ -78,14 +79,14 @@ function displayResult(result, display) {
     display.textContent = result;
 }
 
-function displaySpe(variable) {
-    if (resultClick === true) {
+function displaySpe(variable, display) {
+    if (resultClick === true || speClick === true) {
         if (event.currentTarget.getAttribute('data-operation') === "puissance") {
-            display2.textContent = " sqr(" + variable + ") ";
+            display.textContent = " sqr(" + variable + ") ";
         } else if (event.currentTarget.getAttribute('data-operation') === "racine") {
-            display2.textContent = " √(" + variable + ") ";
+            display.textContent = " √(" + variable + ") ";
         } else {
-            display2.textContent = " 1/" + variable + " ";
+            display.textContent = " 1/" + variable + " ";
         }
     } else {
         if (event.currentTarget.getAttribute('data-operation') === "puissance") {
@@ -173,6 +174,7 @@ function addOp(event) {
     if (event.currentTarget.textContent !== "=") {
         displayNum(event.currentTarget.textContent, display2);
         resultClick = false;
+        speClick = false;
     } else {
         displayNum(event.currentTarget.textContent, display2);
         resultClick = true;
@@ -195,28 +197,31 @@ function addSpe(event) {
     if (nombreStr !== "") {
         console.log("Spe 1")
         nombreSpe = Number(nombreStr)
-        displaySpe(nombreSpe);
+        displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         nombreSpe = resultSpe;
         result = resultSpe;
         console.log("nombreSpe : " + nombreSpe)
         nombreStr = "";
+        speClick = true;
         displayResult(nombreSpe, display1);
     } else if (resultClick === true) {
         console.log("Spe 2")
         nombreSpe = result;
-        displaySpe(nombreSpe);
+        displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         result = resultSpe;
         displayResult(result, display1);
+        speClick = true
         console.log("nombreSpe : " + nombreSpe)
         console.log("NombreNum : " + nombreNum)
 
     } else {
         console.log("Spe 3")
-        displaySpe(nombreSpe);
+        displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         nombreSpe = resultSpe;
+        speClick = true;
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
     }
