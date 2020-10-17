@@ -12,6 +12,7 @@ let buttonOp = document.querySelectorAll(".js-btn-operand");
 let buttonOpSpe = document.querySelectorAll('.js-btn-operand-spe')
 let buttonAddLog = document.querySelector(".js-btn-log");
 let logDiv = document.querySelector('.log');
+let resultLog = document.querySelector('.result-container');
 let btnLog =  document.querySelector('.btn-log');
 let titleLog = document.querySelector('.title-log')
 
@@ -405,6 +406,7 @@ function eraseAll() {
     console.log("lol2");
     display1.textContent = "0";
     display2.textContent = "";
+    resultLog.innerHTML = ""
 }
 buttonEraseAll.addEventListener('click', eraseAll);
 
@@ -424,7 +426,7 @@ buttonEraseLast.addEventListener('click', eraseLast);
 
 //boutton addLog
 function addLog(){
-    logDiv.innerHTML += '<div><span class="operation">'+display2.textContent+'</span><span class="resultat">'+display1.textContent+'</></div>'
+    resultLog.innerHTML += '<div class="flex-log"><span class="operation">'+display2.textContent+'</span><span class="resultat">'+display1.textContent+'</></div>'
 
 }
 buttonAddLog.addEventListener('click', addLog);
