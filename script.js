@@ -135,12 +135,28 @@ function resize(display, content){
     let widthValue = getComputedStyle(display).fontSize
     let width = widthValue.toString()
     let widthNum = Number(width.substring(0, width.length - 2))
+    let widthNumStart =Number(width.substring(0, width.length - 2))
     let longeurMax = display.offsetWidth/(widthNum /1.8);
     console.log(longeurMax)
     console.log(content.length)
     let contentStr = content.toString()
-if(contentStr.length > longeurMax){
-    widthNum = widthNum/2
+if(contentStr.length+2 > longeurMax){
+    widthNum = widthNum/1.5
+display.style.fontSize = widthNum+"px";
+}else if (contentStr.length < longeurMax){
+    display.style.fontSize = widthNumStart+"px";
+}
+}
+function resize2(display, content){
+    let widthValue = getComputedStyle(display).fontSize
+    let width = widthValue.toString()
+    let widthNum = Number(width.substring(0, width.length - 2))
+    let longeurMax = display.offsetWidth/(widthNum /1.8);
+    console.log(longeurMax)
+    console.log(content.length)
+    let contentStr = content.toString()
+if(contentStr.length+2 > longeurMax){
+    widthNum = widthNum/1.5
 display.style.fontSize = widthNum+"px";
 }
 }
@@ -242,7 +258,8 @@ function addOp(event) {
         displayNum(event.currentTarget.textContent, display2);
         resultClick = true;
     }
-
+    resize(display1, display1.textContent)
+    resize(display2, display2.textContent)
     
 
     console.dir(resultClick)
@@ -259,6 +276,7 @@ buttonOp.forEach(ajouterEventOp);
 
 //comportement bouton Spe
 function addSpe(event) {
+
     if (nombreStr !== "") {
         console.log("Spe 1")
         nombreSpe = Number(nombreStr)
@@ -317,6 +335,8 @@ function addSpe(event) {
 
     }
     resize(display1, nombreSpe)
+    resize(display2, displayNumSpe)
+
     console.dir(resultClick)
 }
 function ajouterEventSpe(element) {
