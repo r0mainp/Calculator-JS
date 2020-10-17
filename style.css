@@ -8,6 +8,7 @@ body{
     overflow-y: hidden;
 }
 .calc{
+    width: 100%;
     height: 100%;
     position : relative;
 }
@@ -16,7 +17,7 @@ body{
     display : flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: #f5f0f3;
+    background-color: #bebebe;
     padding: 0 0.1rem;
 }
 .operation-display{
@@ -29,10 +30,11 @@ body{
 .calc-display{
     width : 100%;
     display: flex;
-height : 12%;
+    height : 12%;
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 60px;
+
 }
 .btn-container{
     width: 100%;
@@ -47,21 +49,21 @@ height : 12%;
     justify-content: center;
     align-items: center;
     width: calc(25% - 1rem);
-    margin: 0.1rem 0;
+    margin: 0.2rem 0;
     background-color: 	white;
-    border : 0.1rem solid grey;
     appearance: none;
     font : 400 30px Roboto;
 }
 .btn:hover{
-    background-color: #C3BABA;
+    background-color: 	#8f8e8d;
+    box-shadow:   1px 1px 2px #8f8e8d;
 }
 .btn-operand{
-    background-color: 	#f3f3f3;
+    background-color: 	#d9d9d9;
     font : 300 30px Roboto;
 }
 .btn-result{
-    background-color:	#736F72;
+    background-color:	#8f8e8d;
 }
 .btn-log{
     position: absolute;
@@ -78,7 +80,7 @@ height : 12%;
     left: 0;
     width: 100%;
     height: 0;
-    background-color: #f5f0f3;
+    background-color: #bebebe;
     transition: all 500ms linear;
     overflow-y: scroll;
 }
