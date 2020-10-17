@@ -2,27 +2,31 @@ body{
     box-sizing: border-box;
     font-family: "Roboto";
     font-size: 40px;
+    margin: 0;
+    height: 100vh;
+}
+.calc{
+    height: 100%;
 }
 .calc-container{
-    width : 474px;
-    margin : 0 auto;
+    height: 100vh;
     display : flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: space-around;
     background-color: #f5f0f3;
-    padding: 0.1rem;
+    padding: 0 0.1rem;
 }
 .operation-display{
     width : 100%;
-    height: 30px;
+    height: 7%;
     text-align: right;
     font-size: 28px;
 }
 
 .calc-display{
     width : 100%;
-    height: 100px;
     display: flex;
+height : 10%;
     justify-content: flex-end;
     align-items: flex-end;
     font-size: 70px;
@@ -30,18 +34,18 @@ body{
 .btn-container{
     width: 100%;
     display : flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    flex-grow: 1;
 
 }
 .btn{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24%;
+    width: calc(25% - 1rem);
     margin: 0.1rem 0;
     background-color: 	white;
-    height: 108px;
     border : 0.1rem solid grey;
     appearance: none;
     font : 400 30px Roboto;
@@ -56,3 +60,7 @@ body{
 .btn-result{
     background-color:	#736F72;
 }
+.log{
+    display : none;
+}
+
