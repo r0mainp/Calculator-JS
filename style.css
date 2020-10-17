@@ -1,0 +1,58 @@
+body{
+    box-sizing: border-box;
+    font-family: "Roboto";
+    font-size: 40px;
+}
+.calc-container{
+    width : 474px;
+    margin : 0 auto;
+    display : flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: #f5f0f3;
+    padding: 0.1rem;
+}
+.operation-display{
+    width : 100%;
+    height: 30px;
+    text-align: right;
+    font-size: 28px;
+}
+
+.calc-display{
+    width : 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    font-size: 70px;
+}
+.btn-container{
+    width: 100%;
+    display : flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24%;
+    margin: 0.1rem 0;
+    background-color: 	white;
+    height: 108px;
+    border : 0.1rem solid grey;
+    appearance: none;
+    font : 400 30px Roboto;
+}
+.btn:hover{
+    background-color: #C3BABA;
+}
+.btn-operand{
+    background-color: 	#f3f3f3;
+    font : 300 30px Roboto;
+}
+.btn-result{
+    background-color:	#736F72;
+}
