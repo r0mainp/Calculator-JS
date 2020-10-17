@@ -24,6 +24,7 @@ let lastResult;
 let resultSpe;
 let speDisplay;
 let speClick;
+let displayNumSpe;
 display1.textContent = 0;
 
 let operation = {
@@ -82,19 +83,40 @@ function displayResult(result, display) {
 function displaySpe(variable, display) {
     if (resultClick === true || speClick === true) {
         if (event.currentTarget.getAttribute('data-operation') === "puissance") {
-            display.textContent = " sqr(" + variable + ") ";
+            return display.textContent = "sqr(" + variable + ") ";
         } else if (event.currentTarget.getAttribute('data-operation') === "racine") {
-            display.textContent = " √(" + variable + ") ";
+            return display.textContent = "√(" + variable + ") ";
         } else {
-            display.textContent = " 1/" + variable + " ";
+            display.textContent = "1/" + variable + " ";
         }
     } else {
         if (event.currentTarget.getAttribute('data-operation') === "puissance") {
-            display2.textContent += " sqr(" + variable + ") ";
+            return display2.textContent += "sqr(" + variable + ") ";
         } else if (event.currentTarget.getAttribute('data-operation') === "racine") {
-            display2.textContent += " √(" + variable + ") ";
+            return display2.textContent += "√(" + variable + ") ";
         } else {
-            display2.textContent += " 1/" + variable + " ";
+           return display2.textContent += "1/" + variable + " ";
+        }
+    }
+
+}
+
+function displaySpeAlt(variable) {
+    if (resultClick === true || speClick === true) {
+        if (event.currentTarget.getAttribute('data-operation') === "puissance") {
+            return "sqr(" + variable + ") ";
+        } else if (event.currentTarget.getAttribute('data-operation') === "racine") {
+            return "√(" + variable + ") ";
+        } else {
+            return "1/" + variable + " ";
+        }
+    } else {
+        if (event.currentTarget.getAttribute('data-operation') === "puissance") {
+            return display2.textContent += "sqr(" + variable + ") ";
+        } else if (event.currentTarget.getAttribute('data-operation') === "racine") {
+            return display2.textContent += "√(" + variable + ") ";
+        } else {
+           return display2.textContent += "1/" + variable + " ";
         }
     }
 
@@ -109,7 +131,7 @@ function addOp(event) {
     //partie operation
     if (resultClick === true && nombreSpe !== 0) {
         nombreNum = result;
-        displayResult(nombreNum, display2);
+        displayResult(result, display2);
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op1");
     } else if (resultClick === true && nombreStr !== "") {
@@ -197,7 +219,7 @@ function addSpe(event) {
     if (nombreStr !== "") {
         console.log("Spe 1")
         nombreSpe = Number(nombreStr)
-        displaySpe(nombreSpe, display2);
+        displayNumSpe = displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         nombreSpe = resultSpe;
         result = resultSpe;
@@ -208,19 +230,22 @@ function addSpe(event) {
     } else if (resultClick === true) {
         console.log("Spe 2")
         nombreSpe = result;
-        displaySpe(nombreSpe, display2);
+        displayNumSpe = displaySpe(nombreSpe, display2);
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         result = resultSpe;
         displayResult(result, display1);
         speClick = true
+        resultClick = false;
         console.log("nombreSpe : " + nombreSpe)
         console.log("NombreNum : " + nombreNum)
 
     } else {
         console.log("Spe 3")
-        displaySpe(nombreSpe, display2);
+        displaySpe(displayNumSpe, display2);
+        console.log ("displayNombreSpe = "+displayNumSpe)
         resultSpe = operationSpe[event.currentTarget.getAttribute('data-operation')](nombreSpe)
         nombreSpe = resultSpe;
+        displayNumSpe = displaySpeAlt(resultSpe);
         speClick = true;
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
