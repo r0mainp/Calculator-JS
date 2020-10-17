@@ -10,6 +10,7 @@ let buttonEraseAll = document.querySelector(".js-btn-erase-all");
 let buttonEraseLast = document.querySelector(".js-btn-erase-last")
 let buttonOp = document.querySelectorAll(".js-btn-operand");
 let buttonOpSpe = document.querySelectorAll('.js-btn-operand-spe')
+let buttonAddLog = document.querySelector(".js-btn-log");
 let logDiv = document.querySelector('.log');
 
 let nombreStr = "";
@@ -365,5 +366,12 @@ function eraseLast(){
 }
 
 buttonEraseLast.addEventListener('click', eraseLast);
+
+//boutton addLog
+function addLog(){
+    logDiv.innerHTML += '<div><span class="operation">'+display2.textContent+'</span><span class="resultat">'+display1.textContent+'</></div>'
+
+}
+buttonAddLog.addEventListener('click', addLog);
 
 
