@@ -86,6 +86,7 @@ function displayNum(what, display) {
 }
 function displayResult(result, display) {
     display.textContent = result;
+    
 }
 
 function displaySpe(variable, display) {
@@ -128,6 +129,20 @@ function displaySpeAlt(variable) {
         }
     }
 
+}
+
+function resize(display, content){
+    let widthValue = getComputedStyle(display).fontSize
+    let width = widthValue.toString()
+    let widthNum = Number(width.substring(0, width.length - 2))
+    let longeurMax = display.offsetWidth/(widthNum /1.8);
+    console.log(longeurMax)
+    console.log(content.length)
+    let contentStr = content.toString()
+if(contentStr.length > longeurMax){
+    widthNum = widthNum/2
+display.style.fontSize = widthNum+"px";
+}
 }
 
 
@@ -219,8 +234,6 @@ function addOp(event) {
         console.log("Op6");
     }
 
-
-
     if (event.currentTarget.textContent !== "=") {
         displayNum(event.currentTarget.textContent, display2);
         resultClick = false;
@@ -229,6 +242,8 @@ function addOp(event) {
         displayNum(event.currentTarget.textContent, display2);
         resultClick = true;
     }
+
+    
     nombreStr = "";
     console.dir(resultClick)
     console.log("nombreNum : " + nombreNum)
@@ -288,6 +303,7 @@ function addSpe(event) {
         speClick = true;
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
+
     }else{
         console.log("Spe 4")
         displaySpe(displayNumSpe, display2);
@@ -298,7 +314,9 @@ function addSpe(event) {
         speClick = true;
         displayResult(nombreSpe, display1);
         console.log("nombreSpe : " + nombreSpe)
+
     }
+    resize(display1, nombreSpe)
     console.dir(resultClick)
 }
 function ajouterEventSpe(element) {
@@ -320,17 +338,13 @@ function click(event) {
     let width = widthValue.toString()
     let widthNum = Number(width.substring(0, width.length - 2))
     let longeurMax = display1.offsetWidth/(widthNum /1.8);
-    let shrink = 0;
     console.log(longeurMax)
     console.log(nombreStr.length)
 if(nombreStr.length > longeurMax){
     widthNum = widthNum/2
-console.log("SHRIIIINK")
-
 display1.style.fontSize = widthNum+"px";
 }
 
-    console.log(nombreStr)
 }
 function ajouterEvent(element) {
     element.addEventListener("click", click);
