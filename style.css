@@ -24,7 +24,7 @@ body{
     width : 100%;
     height: 10%;
     text-align: right;
-    font-size: 32px;
+    font-size: 40px;
 }
 
 .calc-display{
@@ -33,7 +33,7 @@ body{
     height : 12%;
     justify-content: flex-end;
     align-items: flex-end;
-    font-size: 60px;
+    font-size: 70px;
 
 }
 .btn-container{
@@ -48,7 +48,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(25% - 1rem);
+    width: 24%;
     margin: 0.2rem 0;
     background-color: 	white;
     appearance: none;
@@ -111,5 +111,48 @@ body{
     font-size: 30px;
     font-weight: 500;
 }
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #d9d9d9;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #8f8e8d;
+    border-radius: 10px;
+  }
 
+ @media (min-width : 768px){
+     body{
+         background-color: #d9d9d9;
+     }
+    .calc{
+        width: 700px;
+        margin: 50px auto;
+        display: flex;
+        max-height: 735px;
+        border: 1px solid #d9d9d9;
+        overflow-y: hidden;
+
+    }
+    .calc-container{
+        max-height: 735px;
+    }
+    .btn-log{
+        display: none;
+    }
+    .log{
+        position: static;
+        width : 50%;
+        height: 100vh;
+        max-height: 735px;
+        transition: none;
+        margin-left: 1rem;
+        overflow-y: scroll;
+    }
+
+ }
 

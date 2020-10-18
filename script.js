@@ -185,6 +185,7 @@ function addOp(event) {
         console.log("Op1-2");
     } else if (resultClick === true && nombreStr !== "") {
         nombreNum = Number(nombreStr);
+        nombreStr = "";
         displayResult(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
         console.log("Op1-3");
@@ -192,6 +193,7 @@ function addOp(event) {
         nombreNum = result
         displayResult(nombreNum, display2);
         operator = event.currentTarget.getAttribute('data-operation');
+        nombreStr = "";
         lastOp = operator;
         console.log("Op1-4");
 
@@ -406,7 +408,7 @@ function eraseAll() {
     console.log("lol2");
     display1.textContent = "0";
     display2.textContent = "";
-    resultLog.innerHTML = "git"
+    resultLog.innerHTML="";
 }
 buttonEraseAll.addEventListener('click', eraseAll);
 
